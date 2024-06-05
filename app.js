@@ -5,7 +5,7 @@ const app = express();
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header(" Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
     res.header(
         " Access-Control-Allow-Headers",
         "X-PINGOTHER, Content-Type, Authorization"
@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
 });
 
 const serve = app.listen(8080, () => {
-    console.log("serve running : http://localhost:8080/");
+    console.log("serve running : http://localhost:8080");
 });
 
 io = socket(serve, { cors: { origin: "*" } });
@@ -27,5 +27,3 @@ io = socket(serve, { cors: { origin: "*" } });
 io.on("connection", (socket) => {
     console.log(socket.id);
 });
-
-//video 1 min 18:16
