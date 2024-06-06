@@ -26,4 +26,9 @@ io = socket(serve, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {
     console.log(socket.id);
+
+    socket.on("sala_conectar", (dados) => {
+        console.log("sala selecionada: " + dados);
+        socket.join(dados);
+    });
 });
