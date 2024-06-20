@@ -39,3 +39,6 @@ io.on("connection", (socket) => {
         socket.to(dados.sala).emit("receber_mensagem", dados.conteudo);
     });
 });
+
+
+
