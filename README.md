@@ -1,7 +1,6 @@
 iniciar o projeto
 ### npm init
 
-
 gerenciar as requisisoens e rotas
 ### npm install express
 
