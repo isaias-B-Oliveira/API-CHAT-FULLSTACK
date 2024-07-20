@@ -3,6 +3,8 @@ const socket = require("socket.io");
 const cors = require("cors");
 const app = express();
 
+const db = require("./models/db");
+
 app.use(express.json());
 
 app.use((req, res, next) => {
