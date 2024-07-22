@@ -3,7 +3,7 @@ const socket = require("socket.io");
 const cors = require("cors");
 const app = express();
 
-const db = require("./models/db");
+const Usuario = require("./models/Usuario");
 
 app.use(express.json());
 
