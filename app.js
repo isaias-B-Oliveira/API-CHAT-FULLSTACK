@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express();
 
 const Usuario = require("./models/Usuario");
+const { json } = require("sequelize");
 
 app.use(express.json());
 
@@ -11,7 +12,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
     res.header(
-        " Access-Control-Allow-Headers",
+        "Access-Control-Allow-Headers",
         "X-PINGOTHER, Content-Type, Authorization"
     );
     app.use(cors());
@@ -20,6 +21,13 @@ app.use((req, res, next) => {
 
 app.get("/", function (req, res) {
     res.send("primeira rota");
+});
+
+app.post("/cadastra-user", async (req, res) => {
+    var dados = req.body;
+    return res.json({
+        dados: dados,
+    });
 });
 
 const serve = app.listen(8080, () => {
