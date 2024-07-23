@@ -21,4 +21,7 @@ const Usuario = db.define("usuarios", {
 //criar a tabela no banco de dados
 //Usuario.sync();
 
+//Apaga a tabela no banco e recria novamente
+//Usuario.sync({ force: true });
+
 module.exports = Usuario;
