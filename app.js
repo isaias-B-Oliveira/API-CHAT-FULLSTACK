@@ -25,9 +25,20 @@ app.get("/", function (req, res) {
 
 app.post("/cadastra-user", async (req, res) => {
     var dados = req.body;
-    return res.json({
-        dados: dados,
-    });
+
+    await Usuario.create(dados)
+        .then(() => {
+            return res.json({
+                erro: false,
+                mensagem: "Usuario Cadastrado com susseço",
+            });
+        })
+        .catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Usuario não Cadastrado",
+            });
+        });
 });
 
 const serve = app.listen(8080, () => {
