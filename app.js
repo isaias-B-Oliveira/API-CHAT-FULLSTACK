@@ -26,6 +26,18 @@ app.get("/", function (req, res) {
 app.post("/cadastra-user", async (req, res) => {
     var dados = req.body;
 
+    const usuario = await Usuario.findOne({
+        where: {
+            email: dados.email,
+        },
+    });
+    if (usuario) {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "ERRO: Email ja cadastrado",
+        });
+    }
+
     await Usuario.create(dados)
         .then(() => {
             return res.json({
