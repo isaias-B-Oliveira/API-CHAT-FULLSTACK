@@ -53,6 +53,27 @@ app.post("/cadastra-user", async (req, res) => {
         });
 });
 
+app.post("/validar-acesso", async (req, res) => {
+    const usuario = await Usuario.findOne({
+        where: {
+            email: req.body.email,
+        },
+    });
+
+    if (usuario == null) {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "ERRO: Usuario nao encontrado",
+        });
+    }
+
+    return res.json({
+        erro: false,
+        mensagem: "Login realisado com susseço",
+        dadosUsuario: usuario,
+    });
+});
+
 const serve = app.listen(8080, () => {
     console.log("serve running : http://localhost:8080");
 });
