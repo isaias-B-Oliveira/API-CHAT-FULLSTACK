@@ -55,6 +55,7 @@ app.post("/cadastra-user", async (req, res) => {
 
 app.post("/validar-acesso", async (req, res) => {
     const usuario = await Usuario.findOne({
+        attributes: ["id", "nome"],
         where: {
             email: req.body.email,
         },
@@ -66,7 +67,6 @@ app.post("/validar-acesso", async (req, res) => {
             mensagem: "ERRO: Usuario nao encontrado",
         });
     }
-
     return res.json({
         erro: false,
         mensagem: "Login realisado com susseço",
