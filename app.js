@@ -25,6 +25,23 @@ app.get("/", function (req, res) {
     res.send("primeira rota");
 });
 
+app.post("/cadastra-mensagem", async (req, res) => {
+    //var dados = req.body;
+    await Mensagem.create(req.body)
+        .then(() => {
+            return res.json({
+                erro: false,
+                mensagem: "Mensagen Cadastrada com susseço",
+            });
+        })
+        .catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Mensagen não Cadastrado",
+            });
+        });
+});
+
 app.post("/cadastra-user", async (req, res) => {
     var dados = req.body;
 
