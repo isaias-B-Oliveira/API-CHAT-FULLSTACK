@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 
 const Usuario = require("./models/Usuario");
+const Mensagem = require("./models/Mensagem");
+
 const { json } = require("sequelize");
 
 app.use(express.json());
