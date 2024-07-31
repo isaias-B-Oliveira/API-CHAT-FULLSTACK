@@ -109,6 +109,11 @@ io.on("connection", (socket) => {
 
     socket.on("enviar_mensagem", (dados) => {
         console.log(dados);
+        Mensagem.create({
+            mensagem: dados.conteudo.mensagem,
+            salaId: dados.sala,
+            usuarioId: dados.conteudo.usuario.id,
+        })
         socket.to(dados.sala).emit("receber_mensagem", dados.conteudo);
     });
 });
