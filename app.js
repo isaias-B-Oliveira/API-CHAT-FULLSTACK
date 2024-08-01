@@ -5,6 +5,7 @@ const app = express();
 
 const Usuario = require("./models/Usuario");
 const Mensagem = require("./models/Mensagem");
+const Sala = require("./models/Sala");
 
 const { json } = require("sequelize");
 
@@ -38,6 +39,23 @@ app.post("/cadastra-mensagem", async (req, res) => {
             return res.status(400).json({
                 erro: true,
                 mensagem: "Erro: Mensagen não Cadastrado",
+            });
+        });
+});
+
+app.post("/cadastra-sala", async (req, res) => {
+    //var dados = req.body;
+    await Sala.create(req.body)
+        .then(() => {
+            return res.json({
+                erro: false,
+                mensagem: "Sala Cadastrada com susseço",
+            });
+        })
+        .catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Sala não Cadastrado",
             });
         });
 });
@@ -113,7 +131,7 @@ io.on("connection", (socket) => {
             mensagem: dados.conteudo.mensagem,
             salaId: dados.sala,
             usuarioId: dados.conteudo.usuario.id,
-        })
+        });
         socket.to(dados.sala).emit("receber_mensagem", dados.conteudo);
     });
 });
