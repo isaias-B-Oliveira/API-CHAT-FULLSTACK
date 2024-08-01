@@ -33,4 +33,7 @@ Mensagem.belongsTo(Sala, { foreignKey: "salaId", allowNull: false });
 //Apaga a tabela no banco e recria novamente
 //Mensagem.sync({ force: true });
 
+//verifica se a alguma diferença na tabela , realiza a alteraçao
+//Mensagem.sync({ alter: true });
+
 module.exports = Mensagem;
