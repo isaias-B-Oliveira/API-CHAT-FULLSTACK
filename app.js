@@ -31,6 +31,9 @@ app.get("/lista-mensagem/:sala", async (req, res) => {
             {
                 model: Usuario,
             },
+            {
+                model: Sala,
+            },
         ],
     })
         .then((mensagens) => {
