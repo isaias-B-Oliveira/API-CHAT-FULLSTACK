@@ -22,8 +22,23 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/", function (req, res) {
-    res.send("primeira rota");
+app.get("/lista-mensagem/:sala", async (req, res) => {
+    const sala = req.params.sala;
+    await Mensagem.findAll({
+        where: { salaId: sala },
+    })
+        .then((mensagens) => {
+            return res.json({
+                erro: false,
+                mensagens: mensagens,
+            });
+        })
+        .catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: nenhuma mensagem encontrada",
+            });
+        });
 });
 
 app.post("/cadastra-mensagem", async (req, res) => {
