@@ -27,6 +27,11 @@ app.get("/lista-mensagem/:sala", async (req, res) => {
     await Mensagem.findAll({
         order: [["id", "ASC"]],
         where: { salaId: sala },
+        include: [
+            {
+                model: Usuario,
+            },
+        ],
     })
         .then((mensagens) => {
             return res.json({
