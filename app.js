@@ -25,6 +25,7 @@ app.use((req, res, next) => {
 app.get("/lista-mensagem/:sala", async (req, res) => {
     const sala = req.params.sala;
     await Mensagem.findAll({
+        order: [["id", "ASC"]],
         where: { salaId: sala },
     })
         .then((mensagens) => {
