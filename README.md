@@ -27,6 +27,10 @@ Esta API permite a comunicação em tempo real entre usuários através de socke
    ```bash
    git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
+2. Instale as dependências:
+   ```bash
+    npm install
+
 ## Contribuição
 Sinta-se à vontade para enviar pull requests ou abrir issues para melhorias ou correções de bugs.
 
